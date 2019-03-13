@@ -1,20 +1,38 @@
-window.addEventListener(load,init);
-function init(){
-  const renderer = new THREE.WebGLRenderer({canvas: document.querySelector("#mycanvas")
-  renderer.setSize(960,540);
-  const scene = new THREE.Scene();
-  const camera = new     THREE.PerspectiveCamera(45, 960/ 540);
-  const geometry = new THREE.BoxGeometry(500, 500, 500);
-  const material = new THREE.MeshNormalMaterial();
-  const box = new THREE.Mesh(geometry, material);
-  scene.add(box);
- 
-  tick();
-  function tick(){
-    requestAnimationFrame(tick);
-    box.rotation.y += 0.01;
-  renderer.render(scene, camera);
+   window.addEventListener('load', init);
 
-    renderer.render(scene,camera);
-  }
+    function init() {
+
+      // サイズを指定
+      const width = 960;
+      const height = 540;
+
+      // レンダラーを作成
+      const renderer = new THREE.WebGLRenderer({
+        canvas: document.querySelector('#myCanvas')
+      });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(width, height);
+
+      // シーンを作成
+      const scene = new THREE.Scene();
+
+      // カメラを作成
+      const camera = new THREE.PerspectiveCamera(45, width / height);
+      camera.position.set(0, 0, +1000);
+
+      // 箱を作成
+      const geometry = new THREE.BoxGeometry(400, 400, 400);
+      const material = new THREE.MeshNormalMaterial();
+      const box = new THREE.Mesh(geometry, material);
+      scene.add(box);
+
+      tick();
+
+  
+      function tick() {
+        box.rotation.y += 0.01;
+        renderer.render(scene, camera); 
+
+        requestAnimationFrame(tick);
+      }
 }
