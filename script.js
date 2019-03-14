@@ -1,11 +1,11 @@
-      // ページの読み込みを待つ
-window.addEventListener('load', init);
-  function init() {
-   // サイズを指定
-    const width = 960;
-    const height = 540;
-  // レンダラーを作成
-    const renderer = new THREE.WebGLRenderer({
+ // ページの読み込みを待つ
+      window.addEventListener('load', init);
+      function init() {
+        // サイズを指定
+        const width = 960;
+        const height = 540;
+        // レンダラーを作成
+        const renderer = new THREE.WebGLRenderer({
           canvas: document.querySelector('#myCanvas')
         });
         renderer.setPixelRatio(window.devicePixelRatio);
@@ -28,4 +28,3 @@ window.addEventListener('load', init);
           requestAnimationFrame(tick);
         }
       }
- 
